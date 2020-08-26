@@ -35,5 +35,15 @@
     "react-dom": "^16.12.0",
     "umi": "^3.2.10",
     "yorkie": "^2.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^9.1.2",
+    "husky": "^4.2.5"
+  },
+  "husky": {
+    "hooks": {
+        "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
