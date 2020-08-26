@@ -1,0 +1,85 @@
+.collapseItemTable {
+  border: 1px solid #f0f0f0;
+  border-right: 0;
+  border-bottom: 0;
+  :global {
+    .ant-table-row {
+      height: 100px;
+    }
+    .ant-table-cell {
+      border: 1px solid #f0f0f0;
+      border-top: 0;
+      border-left: 0;
+      padding: 15px;
+    }
+  }
+}
+.baseProduct {
+  :global {
+    .ant-collapse .ant-collapse-item-disabled > .ant-collapse-header {
+      cursor: auto !important;
+    }
+  }
+  .panelHeader {
+    display: flex;
+    position: relative;
+    .col1,
+    .col2,
+    .col3 {
+      position: relative;
+      .item {
+        margin-right: 10px;
+        margin-bottom: 8px;
+        margin-top: 8px;
+      }
+    }
+    .col2,
+    .col3 {
+      padding-left: 10px;
+    }
+    .borderRight {
+      position: absolute;
+      width: 1px;
+      height: calc(100% + 24px);
+      right: 0;
+      top: -12px;
+      background-color: rgb(217, 217, 217);
+    }
+    .col1 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 150px;
+      color: #373d41;
+      font-size: 14px;
+      text-align: center;
+    }
+    .col2 {
+      width: 30%;
+      .active {
+        color: #fff;
+        background: #1890ff;
+        border-color: #1890ff;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+      }
+    }
+    .col3 {
+      flex: 1;
+      .searched {
+        border-color: #1890ff;
+        color: #1890ff;
+        background: white;
+      }
+    }
+  }
+  .flow {
+    width: 900px;
+    margin: 0 auto;
+    .tipBottom {
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

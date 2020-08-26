@@ -1,0 +1,49 @@
+.transformBorder {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border: 1px solid #d9d9d9;
+  @width: 6px;
+  @halfWidth: (@width+2) / 2;
+  .block {
+    width: @width;
+    height: @width;
+    border: 1px solid #d9d9d9;
+    background-color: red;
+    position: absolute;
+    &.topLeft {
+      top: -@halfWidth;
+      left: -@halfWidth;
+    }
+    &.topRight {
+      top: -@halfWidth;
+      right: -@halfWidth;
+    }
+    &.bottomLeft {
+      bottom: -@halfWidth;
+      left: -@halfWidth;
+    }
+    &.bottomRight {
+      bottom: -@halfWidth;
+      right: -@halfWidth;
+    }
+    &.left {
+      left: -@halfWidth;
+      top: calc(50% - @halfWidth);
+    }
+    &.top {
+      top: -3px;
+      left: calc(50% - @halfWidth);
+    }
+    &.right {
+      right: -3px;
+      top: calc(50% - @halfWidth);
+    }
+    &.bottom {
+      bottom: -3px;
+      left: calc(50% - @halfWidth);
+    }
+  }
+}
