@@ -1,0 +1,45 @@
+.btn {
+  text-transform: uppercase;
+  position: relative;
+  background-image: linear-gradient(to right, #25aae1, #40e495);
+  box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+  color: white;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  display: inline-block;
+  padding: 0 15px;
+  border-radius: 16px;
+  overflow: hidden;
+  &::before {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to left,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(255, 255, 255, 0.4) 50%
+    );
+    background-size: 210% 100%;
+    background-position: right bottom;
+    transition: all 1s;
+  }
+  &:hover::before {
+    background-position: left bottom;
+  }
+}
+.disable {
+  background-image: linear-gradient(to right, #d6dbdd, #6b6e6d);
+  box-shadow: 0 4px 15px 0 rgba(182, 190, 190, 0.75);
+}
+.workZoom {
+  border: 1px solid #efefef;
+  text-align: center;
+  line-height: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
