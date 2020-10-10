@@ -1,0 +1,73 @@
+@width: 120px;
+.wrapper {
+  position: relative;
+  overflow: hidden;
+  width: @width;
+  height: 40px;
+  line-height: 40px;
+  .textContent {
+    white-space: nowrap;
+    animation-name: run, loop;
+    animation-iteration-count: 1, infinite;
+    animation-timing-function: linear;
+    position: absolute;
+  }
+}
+@keyframes run0 {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(@width);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+@keyframes run {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+@keyframes loop {
+  from {
+    transform: translateX(@width);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+// @-webkit-keyframes running {
+//   from {
+//     transform: translateX(0);
+//   }
+//   to {
+//     transform: translateX(-120px);
+//   }
+// }
+.noticeCompWrapper {
+  height: 40px;
+  line-height: 40px;
+  overflow: hidden;
+  position: relative;
+  .noticeContent {
+    white-space: nowrap;
+    position: absolute;
+  }
+}
+.noticeCompWrapper {
+  height: 40px;
+  line-height: 40px;
+  overflow: hidden;
+  position: relative;
+  .noticeContent {
+    white-space: nowrap;
+    position: absolute;
+  }
+}

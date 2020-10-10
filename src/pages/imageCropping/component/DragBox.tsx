@@ -1,4 +1,11 @@
-import React, { useState, MouseEventHandler, useRef, useCallback } from 'react';
+import React, {
+  useState,
+  MouseEventHandler,
+  useRef,
+  useCallback,
+  Key,
+  useEffect,
+} from 'react';
 import styles from './DragBox.less';
 
 enum DirectionEnum {
@@ -13,7 +20,12 @@ enum DirectionEnum {
   移动 = 'move',
 }
 interface Props {
-  bounder?: { left: [number, number]; top: [number, number] };
+  bounder?: {
+    left: [number, number];
+    top: [number, number];
+    width: Key;
+    height: Key;
+  };
 }
 const DragBox: React.FC<Props> = props => {
   const dragRef = useRef<any>(null);
@@ -97,7 +109,7 @@ const DragBox: React.FC<Props> = props => {
       }
       case DirectionEnum.左下: {
         w = width - moveX;
-        y = height + moveY;
+        h = height + moveY;
         x = position.left + moveX;
         y = position.top;
         break;
@@ -188,6 +200,25 @@ const DragBox: React.FC<Props> = props => {
     dragRef.current.onmouseup = release;
     dragRef.current.onmouseleave = release;
   };
+  const getClipImg = () => {
+    const c = document.createElement('canvas');
+    c.width = Number(width);
+    c.height = Number(height);
+    const ctx = c.getContext('2d');
+    const img = document.getElementById('target');
+    ctx?.drawImage(
+      img,
+      -position.left + Number(props.bounder?.left?.[0]),
+      -position.top + Number(props.bounder?.top?.[0]),
+      props.bounder?.width,
+      props.bounder?.height,
+    );
+    const clipTarget = document.getElementById('clipTarget');
+    clipTarget?.setAttribute('src', c.toDataURL());
+  };
+  useEffect(() => {
+    getClipImg();
+  }, [position, width, height]);
   return (
     <div
       className={styles.dragWrapper}
@@ -202,6 +233,32 @@ const DragBox: React.FC<Props> = props => {
         }
       }}
     >
+      <div
+        className={styles.mask}
+        style={{ width: position.left, height: '100%', left: 0, top: 0 }}
+      ></div>
+      <div
+        className={styles.mask}
+        style={{
+          width: `calc(100% - ${position.left + width}px)`,
+          height: '100%',
+          right: 0,
+          top: 0,
+        }}
+      ></div>
+      <div
+        className={styles.mask}
+        style={{ width, height: position.top, left: position.left, top: 0 }}
+      ></div>
+      <div
+        className={styles.mask}
+        style={{
+          width,
+          height: `calc(100% - ${height + position.top}px)`,
+          bottom: 0,
+          left: position.left,
+        }}
+      ></div>
       <div
         className={styles.dragBox}
         ref={dragBoxRef}

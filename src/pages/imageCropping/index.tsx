@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Key } from 'react';
 import { Card, Form, Upload, Button } from 'antd';
 import styles from './index.less';
 import DragBox from './component/DragBox';
@@ -21,7 +21,12 @@ const ImageCropping: React.FC<Props> = props => {
     };
     return false;
   };
-  const getBounder = (): { left: [number, number]; top: [number, number] } => {
+  const getBounder = (): {
+    left: [number, number];
+    top: [number, number];
+    width: Key;
+    height: Key;
+  } => {
     let leftMin = 0,
       leftMax = width,
       topMin = 0,
@@ -42,6 +47,8 @@ const ImageCropping: React.FC<Props> = props => {
     return {
       left: [parseInt(leftMin + ''), parseInt(leftMax + '')],
       top: [parseInt(topMin + ''), parseInt(topMax + '')],
+      width: imgWidth,
+      height: imgHeight,
     };
   };
   return (
@@ -64,6 +71,7 @@ const ImageCropping: React.FC<Props> = props => {
         >
           <img
             src={imgurl}
+            id="target"
             alt=""
             style={{ width: imgWidth, height: imgHeight }}
             onLoad={e => {
@@ -99,6 +107,9 @@ const ImageCropping: React.FC<Props> = props => {
           >
             start cropping
           </div>
+        </div>
+        <div>
+          <img id="clipTarget" src="" />
         </div>
       </Card>
     </div>
