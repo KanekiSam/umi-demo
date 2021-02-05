@@ -1,0 +1,168 @@
+.contaniner {
+  height: 100%;
+  .moduleBar {
+    height: 45px;
+  }
+  :global {
+    .delete-btn {
+      cursor: pointer;
+    }
+    .red {
+      color: red;
+    }
+    .template-block {
+      background-color: yellow;
+      position: relative;
+      padding-left: 40px;
+    }
+    .button-remove {
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    .bf-content {
+      background: #e5e5e5;
+      height: calc(100% - 137px);
+      .DraftEditor-root {
+        width: 720px;
+        margin: 0 auto;
+        background: white;
+        margin-top: 10px;
+      }
+    }
+    .module-wrapper {
+      position: relative;
+      .delete-btn {
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        border-radius: 100%;
+        background-color: red;
+        margin-right: 5px;
+        position: relative;
+        &::after {
+          content: '删除';
+          display: inline-block;
+          color: white;
+          background-color: #000;
+          bottom: -4px;
+          left: 0;
+          padding: 0 5px;
+          font-size: 12px;
+          &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: -4px;
+            left: 27px;
+            width: 5px;
+            height: 5px;
+            transform: scale(45deg);
+            background: #000;
+          }
+        }
+      }
+    }
+    .my-button {
+      top: -45px;
+      left: 0;
+      position: absolute;
+    }
+    #xxx-hhhh {
+      color: red;
+    }
+  }
+}
+:global {
+  #root {
+    height: 100%;
+  }
+  .wxtext {
+    position: relative;
+    ul {
+      li {
+        pointer-events: none;
+      }
+      li:first-child {
+        // :global(.tooltip) {
+        //   display: block;
+        // }
+        // background-color: red;
+        position: relative;
+        &::before {
+          pointer-events: auto !important;
+          content: '';
+          position: absolute;
+          left: -20px;
+          bottom: 7px;
+          width: 6px;
+          height: 6px;
+          background-color: black;
+          border-radius: 100%;
+          box-sizing: content-box;
+          border: 5px solid #e5e5e5;
+          &:hover {
+            background-color: red;
+          }
+        }
+        &::marker {
+          cursor: pointer;
+          color: red;
+        }
+        .wxtext-btn {
+          position: absolute;
+          width: 6px;
+          height: 6px;
+          border-radius: 100%;
+          background-color: black;
+          left: -17px;
+          bottom: 12px;
+          z-index: 200;
+          &:hover::after {
+            position: absolute;
+            content: '';
+            width: 16px;
+            height: 16px;
+            background-color: #e5e5e5;
+            left: -5px;
+            top: -5px;
+            border-radius: 100%;
+            z-index: 1;
+          }
+        }
+      }
+    }
+  }
+}
+.tooltip {
+  position: absolute;
+  cursor: pointer;
+  // color: white;
+  background: white;
+  z-index: 20000;
+  width: 200px;
+  height: 50px;
+  line-height: 40px;
+  padding: 5px 0px;
+  text-align: center;
+  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
+    0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  .btn {
+    background-color: #e5e5e5;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 8.48528137px;
+    height: 8.48528137px;
+    border-color: white;
+    border-style: solid;
+    border-width: 4.24264069px;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    top: -6.2px;
+    left: calc(50% - 3.1px);
+  }
+}
